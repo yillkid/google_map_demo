@@ -1,30 +1,50 @@
-<script>
-function initMap() {
-    // 地圖中心設置為台灣埔里
-    var puli = {lat: 23.966, lng: 120.967};
-    var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 13,
-        center: puli
-    });
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Maps API 整合示範</title>
+    <style>
+        /* 設定地圖的大小 */
+        #map {
+            height: 400px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <h1>台灣埔里地圖示範</h1>
+    <!-- 地圖顯示區域 -->
+    <div id="map"></div>
 
-    // 虎頭山的位置和標記
-    var tigerMountain = {lat: 23.975, lng: 120.973};
-    var markerTigerMountain = new google.maps.Marker({
-        position: tigerMountain,
-        map: map,
-        title: '虎頭山 (99 分)'
-    });
+    <script>
+        function initMap() {
+            // 地圖中心設置為台灣埔里
+            var puli = {lat: 23.966, lng: 120.967};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 13,
+                center: puli
+            });
 
-    // 濟南大學的位置和標記
-    var jinanUniversity = {lat: 23.961, lng: 120.962};
-    var markerJinanUniversity = new google.maps.Marker({
-        position: jinanUniversity,
-        map: map,
-        title: '濟南大學 (90 分)'
-    });
-}
-</script>
-// 載入 Google Maps API (請用您自己的 API 密鑰替換 YOUR_API_KEY)
-<script async defer
-src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap">
-</script>
+            // 虎頭山的位置和標記
+            var tigerMountain = {lat: 23.975, lng: 120.973};
+            var markerTigerMountain = new google.maps.Marker({
+                position: tigerMountain,
+                map: map,
+                title: '虎頭山 (99 分)'
+            });
+
+            // 濟南大學的位置和標記
+            var jinanUniversity = {lat: 23.961, lng: 120.962};
+            var markerJinanUniversity = new google.maps.Marker({
+                position: jinanUniversity,
+                map: map,
+                title: '濟南大學 (90 分)'
+            });
+        }
+    </script>
+
+    <!-- Google Maps API 加載 -->
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCeaDb91eZtkP94dt-ra3y5dixOse4DZI&callback=initMap">
+    </script>
+</body>
+</html>
