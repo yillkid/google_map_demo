@@ -8,6 +8,14 @@
             height: 400px;
             width: 100%;
         }
+        /* 自定義標記的樣式 */
+        .custom-marker {
+            padding: 5px;
+            background: rgb(255, 255, 255);
+            border: 1px solid black;
+            border-radius: 3px;
+            white-space: nowrap;
+        }
     </style>
 </head>
 <body>
@@ -23,18 +31,26 @@
                 center: puli
             });
 
-            var tigerMountain = {lat: 23.975, lng: 120.973};
-            var markerTigerMountain = new google.maps.Marker({
-                position: tigerMountain,
-                map: map,
-                label: '虎頭山 (99 分)'
+            addCustomMarker({lat: 23.975, lng: 120.973}, '虎頭山 (99 分)', map);
+            addCustomMarker({lat: 23.961, lng: 120.962}, '濟南大學 (90 分)', map);
+        }
+
+        function addCustomMarker(position, text, map) {
+            var marker = new google.maps.Marker({
+                position: position,
+                map: map
             });
 
-            var jinanUniversity = {lat: 23.961, lng: 120.962};
-            var markerJinanUniversity = new google.maps.Marker({
-                position: jinanUniversity,
-                map: map,
-                label: '濟南大學 (90 分)'
+            var label = document.createElement('div');
+            label.innerHTML = text;
+            label.className = 'custom-marker';
+
+            var infowindow = new google.maps.InfoWindow({
+                content: label
+            });
+
+            marker.addListener('click', function() {
+                infowindow.open(map, marker);
             });
         }
     </script>
